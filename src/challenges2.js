@@ -61,8 +61,31 @@ function generatePhoneNumber(numbers) {
 }
 
 // Desafio 12
-function triangleCheck() {
-  // seu código aqui
+function lessThanSumSides(lineA, lineB, lineC) {
+  const sumSidesBC = lineB + lineC;
+  const sumSidesAC = lineA + lineC;
+  const sumSidesAB = lineA + lineB;
+  if (lineA < sumSidesBC && lineB < sumSidesAC && lineC < sumSidesAB) {
+    return true;
+  }
+  return false;
+}
+
+function greaterThanAbsValue(lineA, lineB, lineC) {
+  const absValueBC = Math.abs(lineB - lineC);
+  const absValueAC = Math.abs(lineA - lineC);
+  const absValueAB = Math.abs(lineA - lineB);
+  if (lineA > absValueBC && lineB > absValueAC && lineC > absValueAB) {
+    return true;
+  }
+  return false;
+}
+
+function triangleCheck(lineA, lineB, lineC) {
+  if (lessThanSumSides(lineA, lineB, lineC) && greaterThanAbsValue(lineA, lineB, lineC)) {
+    return true;
+  }
+  return false;
 }
 
 // Desafio 13
