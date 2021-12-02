@@ -19,8 +19,9 @@ function splitSentence(sentence) {
 }
 
 // Desafio 4
-function concatName() {
-  // seu código aqui
+function concatName(nameArray) {
+  const name = `${nameArray[nameArray.length - 1]}, ${nameArray[0]}`;
+  return name;
 }
 
 // Desafio 5
