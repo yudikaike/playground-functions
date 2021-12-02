@@ -16,8 +16,48 @@ function techList(technologies, personName) {
 }
 
 // Desafio 11
-function generatePhoneNumber() {
-  // seu código aqui
+function validatePhoneSize(numbers) {
+  if (numbers.length !== 11) {
+    return false;
+  }
+  return true;
+}
+
+function validateNumberRange(numbers) {
+  for (let number of numbers) {
+    if (number < 0 || number > 9) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function validateNumberRepetition(numbers) {
+  const numberRepetitions = {};
+  for (let number of numbers) {
+    if (!numberRepetitions[number]) {
+      numberRepetitions[number] = 0;
+    }
+    numberRepetitions[number] += 1;
+    if (numberRepetitions[number] >= 3) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function generatePhoneNumber(numbers) {
+  const sizeErrorMessage = 'Array com tamanho incorreto.';
+  const invalidNumbersErrorMessage = 'não é possível gerar um número de telefone com esses valores';
+  if (!validatePhoneSize(numbers)) {
+    return sizeErrorMessage;
+  }
+  if (!validateNumberRange(numbers) || !validateNumberRepetition(numbers)) {
+    return invalidNumbersErrorMessage;
+  }
+  const string = numbers.join('');
+  const phoneNumber = `(${string.slice(0, 2)}) ${string.slice(2, 7)}-${string.slice(7, 11)}`;
+  return phoneNumber;
 }
 
 // Desafio 12
